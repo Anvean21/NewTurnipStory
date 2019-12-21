@@ -11,18 +11,20 @@ namespace TurnipStory
        public string Name { get; set; }
         public int  Hp { get; set; }
        
-        public  void TurnipCreate()
+       async public  void TurnipCreate()
         {
 
             Name = "Репка";
-            Hp = Randomizer.Rand(75,150);
+            Hp = PersonFactory.Rand(75,150);
             if (Hp < 100)
             {
                 Console.WriteLine($"И выросла {Name} не большая ");
+                await Task.Delay(2000);
             }
             else
             {
                 Console.WriteLine($"И выросла {Name} большая прeбольшая ");
+                await Task.Delay(2000);
             }
         }
     }

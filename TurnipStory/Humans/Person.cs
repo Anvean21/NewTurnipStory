@@ -19,6 +19,7 @@ namespace TurnipStory
     interface IHelp
     {
         void CallHelp();
+
     }
     interface ITry
     {

@@ -2,11 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+
+using static TurnipStory.GrandMa;
+using static TurnipStory.StoryTeller;
 
 namespace TurnipStory
 {
-
+    
+        delegate void Message();
     class GrandPa : Person,IHelp,ITry
     {
         public delegate void EventDelegate(string message);
@@ -15,7 +20,7 @@ namespace TurnipStory
             : base(name, damage) { }
        public  void Create()
         {
-            if (Randomizer.Rand(1,15)<3)
+            if (PersonFactory.Rand(1,15)<3)
             {
                 try
                 {
@@ -32,13 +37,15 @@ namespace TurnipStory
             else
             {
                 Console.WriteLine($"{Name} посадил репку");
+               
             }
         }
         public void CallHelp()
         {
 
-            Console.WriteLine($"Зовет {Name}  Бабу ");
-            if (Randomizer.Rand(1,15)<3)
+            Console.WriteLine($"Зовет {Name} бабу ");
+            
+            if (PersonFactory.Rand(1,15)<3)
             {
                 try
                 {
@@ -59,6 +66,7 @@ namespace TurnipStory
             if (hp >= 0)
             {
                 Console.WriteLine("Попытался дед вытащить репку, ничего не получилось.");
+              
             }
             else
             {
@@ -70,17 +78,17 @@ namespace TurnipStory
         }
         public void GPevent()
         {
-                if (Randomizer.Rand(1, 10) < 3)
+                if (PersonFactory.Rand(1, 10) < 3)
                 {
                 Console.ForegroundColor = ConsoleColor.Red;
                 GrandPaEvent?.Invoke("Возникло событие : У деда прихватило спину и его отправили в больницу.");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
-                else if (Randomizer.Rand(1, 15) < 3)
+                else if (PersonFactory.Rand(1, 15) < 3)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
-                GrandPaEvent?.Invoke("Возникло событие : Дед плюнул, взял у Петровича трактор и выкопал репку");
+                GrandPaEvent?.Invoke($"Возникло событие : {Name} плюнул, взял у Петровича трактор и выкопал репку");
                 Console.ReadKey();
                 Environment.Exit(0);
             }

@@ -7,6 +7,7 @@ using static TurnipStory.GrandPa;
 
 namespace TurnipStory
 {
+    public delegate void Graaand();
     class GrandMa : Person,IHelp,ITry
     {
         public event EventDelegate GrandMaEvent;
@@ -15,7 +16,7 @@ namespace TurnipStory
         public void CallHelp()
         {
             Console.WriteLine($"Зовет {Name} внучку");
-            if (Randomizer.Rand(1, 15) < 5)
+            if (PersonFactory.Rand(1, 15) < 3)
             {
                 try
                 {
@@ -47,14 +48,15 @@ namespace TurnipStory
         }
         public void GMevent()
         {
-            if (Randomizer.Rand(1, 10) < 3)
+            if (PersonFactory.Rand(1, 15) < 3)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                GrandMaEvent?.Invoke("Возникло событие : Принесли пенсию, и бабка поехала на шоппинг.");
+                GrandMaEvent?.Invoke("Возникло событие : Принесли пенсию, и бабуля поехала на шоппинг.");
                 Console.ReadKey();
                 Environment.Exit(0);
             }
             
         }
+        
     }
 }
