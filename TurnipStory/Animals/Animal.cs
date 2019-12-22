@@ -15,5 +15,8 @@ namespace TurnipStory
             Alias = alias;
             Damage = damage;
         }
+      public abstract void CallHelp();
+
+        public abstract void GetStatus(int hp);
     }
 }

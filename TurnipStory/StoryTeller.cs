@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using static TurnipStory.GrandPa;
+
 
 namespace TurnipStory
 {
     class StoryTeller
     {
-
         async public static void Sttory()
         {
             Operation pull = (x, y) => x - y;
@@ -44,26 +45,18 @@ namespace TurnipStory
             await Task.Delay(3000);
 
 
-            Dog dog = new Dog("Жучка", PersonFactory.Rand(10, 30));
-            turnip.Hp = pull(turnip.Hp, dog.Damage);
-            dog.GetStatus(turnip.Hp);
-            dog.CallHelp();
-            await Task.Delay(3000);
+            List<Animal> lst = new List<Animal>();
+            lst.Add(new Cat("Кошка", PersonFactory.Rand(5, 15)));
+            lst.Add(new Dog("Жучка", PersonFactory.Rand(10, 30)));
+            lst.Add(new Mouse("Мышка", PersonFactory.Rand(1, 7)));
 
-
-            Cat cat = new Cat("Кошка", PersonFactory.Rand(5, 15));
-            turnip.Hp = pull(turnip.Hp, cat.Damage);
-            cat.GetStatus(turnip.Hp);
-            cat.CallHelp();
-            await Task.Delay(3000);
-
-
-            Mouse mouse = new Mouse("Мышка", PersonFactory.Rand(1, 7));
-            turnip.Hp = pull(turnip.Hp, mouse.Damage);
-            await Task.Delay(3000);
-            mouse.GetStatus(turnip.Hp);
-
-
+            foreach (var animal in lst)
+            {
+                turnip.Hp = pull(turnip.Hp, animal.Damage);
+                animal.GetStatus(turnip.Hp);
+                animal.CallHelp();
+                await Task.Delay(3000);
+            }
         }
         public static void ShowMess(string message)
         {

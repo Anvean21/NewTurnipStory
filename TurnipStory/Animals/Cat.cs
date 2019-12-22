@@ -12,12 +12,12 @@ namespace TurnipStory
             : base(alies, damage)
         { }
 
-        public void CallHelp()
+        public override void CallHelp()
         {
             Console.WriteLine($"Мяу-мяу, зовет кошка на помощь мышку");
         }
 
-        public void GetStatus( int hp)
+        public override void GetStatus( int hp)
         {
             if (hp >= 0)
             {

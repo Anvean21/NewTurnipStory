@@ -11,7 +11,13 @@ namespace TurnipStory
         public Mouse(string alies, int damage)
             : base(alies, damage)
         { }
-        public void GetStatus(int hp)
+
+        public override void CallHelp()
+        {
+            
+        }
+
+        public override void GetStatus(int hp)
         {
             if (hp >= 0)
             {
